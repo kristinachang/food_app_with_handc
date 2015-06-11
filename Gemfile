@@ -36,6 +36,8 @@ gem "paperclip", "~> 4.2"
 
 gem 'pry-rails'
 
+gem 'chart-js-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
