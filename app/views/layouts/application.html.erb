@@ -9,6 +9,7 @@
   <link href='http://fonts.googleapis.com/css?family=PT+Sans|Josefin+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<!-- NavBar -->
 <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -25,10 +26,14 @@
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
+            <% if current_user%>
+          <li><a href="users/<%=current_user.id%>/entries">Entry</a></li>
+          <%end%>  
           </ul>
           <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-          <h4>Welcome <%=@user%></h4>
+          <li><%=link_to "Logout", destroy_user_session_path, :method => :delete%>
+          </li>
           <% else%>
             <li><%=link_to 'Sign Up', new_user_registration_path%></li>
             <li><%= link_to "Log in", new_user_session_path%></li>
@@ -37,6 +42,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    <!-- End of NavBar -->
 
 	<% if notice %>
   		<p class="alert alert-success"><%= notice %></p>

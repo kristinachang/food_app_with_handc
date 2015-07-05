@@ -1,6 +1,7 @@
 class SiteController < ApplicationController
 
 	def index
+		@users= current_user
 		# GET /  root
 	end
 

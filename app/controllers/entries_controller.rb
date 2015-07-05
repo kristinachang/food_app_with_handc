@@ -73,16 +73,16 @@ class EntriesController < ApplicationController
 			)
 			@food = JSON.parse(resp.body)["report"]
 
-			@report = @entry.reports.new
+			@entry = @entry.reports.new
 
-			@report.name = @food["food"]["name"]
-			@report.ndbno = params[:ndbno]
-			@report.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
-			@report.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
-			@report.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
-			@report.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
+			@entry.name = @food["food"]["name"]
+			@entry.ndbno = params[:ndbno]
+			@entry.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
+			@entry.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
+			@entry.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
+			@entry.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
 
-			@report.save
+			@entry.save
 
 			redirect_to @entry  
 		end
