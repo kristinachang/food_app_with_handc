@@ -1,1 +1,5 @@
 SITE index.html.erb
+
+<% if current_user%>
+<h1><%=current_user.email%>'s Entries</h1>
+<%end%>

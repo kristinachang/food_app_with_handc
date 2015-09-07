@@ -1,1 +1,8 @@
 ENTRIES index.html.erb
+
+<h4><%= current_user.email%>'s Entries</h4>
+<ul>
+	<%@entries.each do |entry|%>
+	<li><%=entry.name%></li>
+<%end%>
+</ul>
