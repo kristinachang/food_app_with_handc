@@ -1,1 +1,15 @@
 ENTRIES index.html.erb
+
+
+<div class='container'>
+<div class='row'>
+	<h3>Food Name:</h3>
+	<% @user.entries.each do |entry| %>
+		<p><%= entry.name %> <br>
+		   <%= entry.date %> <br>
+		   <%= entry.time %> <br>
+		   <%= entry.ndbno %> <br>
+		   <%= entry.kcal %> <br>
+		</p>
+	<% end %>
+</div>

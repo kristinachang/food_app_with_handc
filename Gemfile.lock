@@ -41,7 +41,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    byebug (5.0.0)
+    byebug (4.0.5)
       columnize (= 0.9.0)
     chart-js-rails (0.0.9)
       railties (> 3.1)
@@ -104,6 +104,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.1.0)
+      byebug (~> 4.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     pundit (1.0.0)
@@ -182,7 +185,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  byebug
   chart-js-rails
   coffee-rails (~> 4.1.0)
   devise
@@ -190,6 +192,7 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 4.2)
   pg
+  pry-byebug
   pry-rails
   pundit
   rails (= 4.2.1)
