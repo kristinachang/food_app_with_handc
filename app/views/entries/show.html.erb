@@ -1,1 +1,87 @@
 ENTRY show.html.erb
+
+<p>
+	<strong>Food:</strong>
+	<% @user.entries.each do |entry| %>
+		<p>Name <%= entry.name %></p>
+		<p>Date <%= entry.date %></p>
+		<p>Time <%= entry.time %></p>
+		<p>Calories <%= entry.kcal %> kcal</p>
+		<p>Protein <%= entry.protein %> g</p>
+		<p>Carbs <%= entry.carb %> g</p>
+		<p>Fat <%= entry.fat %> g</p>
+	<% end %>
+</p>
+
+<p>
+    <%= form_for user_entry_path, :method => 'get' do %>
+      <%= label_tag(:q, "Search for food:") %> <br>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+</p>
+
+<p>
+	<% if @foods.present? %>
+	<table>
+		<% @foods.each do |f| %>
+			<tr>
+				<td>
+					<%= f["name"] %>
+				</td>
+				<td>
+					<%= form_for user_entry_path, :method => 'PUT' do %>
+					  <%= hidden_field(nil, :ndbno, value: f["ndbno"]) %>
+					  <%= submit_tag("Add to Entry") %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<% end %>
+</p>
+
+<!-- Daily Food Diary - selects MEAL by TIME and will be moved to the search page later -->
+
+<h2 class="sub-header">Daily Food Diary</h2>
+	<%= form_for user_entry_path do |f| %>
+		<div>
+			<%= f.label "Select a time" %>
+			<%= f.time_field :time %>
+		</div>
+
+		<div>
+			<%= f.submit "Save meal" %>
+		</div>
+	<% end %>          
+
+
+
+
+
+<h2>Nutrition Log</h2>
+
+            <p>Your logged food will display below.</p> 
+ 
+          <!-- Display morning data  -->          
+                <table id='datatable' cellspacing="0" class="table table-striped">
+                  <thead>
+                    <tr >
+                      <th id="head" scope="col" class="nobg" style="width:50%">Morning</th>
+                      <th id='h-alt' scope="col" style="width:12%">cal</th>
+                      <th id='h-alt' scope="col" style="width:12%">carb</th>
+                      <th id='h-alt' scope="col" style="width:12%">prot</th>
+                      <th id='h-alt' scope="col" style="width:12%">fat</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                    <% @food_morning.each do |entry| %>
+                    
+                      <tr>
+                        <td class='name'>S<%= entry.name %></td>
+                        <td>S<%= entry.kcal %></td>
+                      </tr>
+                    <% end %>
+                      
+                  </tbody>
+                </table>

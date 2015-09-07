@@ -1,8 +1,23 @@
 ENTRIES index.html.erb
 
+
 <h4><%= current_user.email%>'s Entries</h4>
 <ul>
 	<%@entries.each do |entry|%>
 	<li><%=entry.name%></li>
 <%end%>
 </ul>
+
+
+<div class='container'>
+<div class='row'>
+	<h3>Food Name:</h3>
+	<% @user.entries.each do |entry| %>
+		<p><%= entry.name %> <br>
+		   <%= entry.date %> <br>
+		   <%= entry.time %> <br>
+		   <%= entry.ndbno %> <br>
+		   <%= entry.kcal %> <br>
+		</p>
+	<% end %>
+</div>

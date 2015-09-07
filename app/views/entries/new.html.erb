@@ -1,3 +1,17 @@
 ENTRY new.html.erb
 
+
 <%= render 'form'%>
+
+<h2 class="sub-header">Daily Food Diary</h2>
+	<%= form_for user_entry_path do |f| %>
+		<div>
+			<%= f.label "Select a date" %>
+			<%= f.date_field :date %>
+		</div>
+
+		<div>
+			<%= f.submit "Start Journal Entry" %>
+		</div>
+	<% end %>     
+
